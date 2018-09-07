@@ -18,22 +18,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1a-WS-fGW" customClass="AYTypeWriterLabel" customModule="AYTypeWriter">
-                                <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiD-6I-XV9">
+                                <rect key="frame" x="50" y="617" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYr-6q-loT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0D-51-tyy">
+                                <rect key="frame" x="109" y="617" width="42" height="30"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BmD-EU-CbX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUd-nQ-0M0">
+                                <rect key="frame" x="300" y="617" width="41" height="30"/>
+                                <state key="normal" title="Finish"/>
+                                <connections>
+                                    <action selector="finishButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wHI-w3-Mxy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXA-iV-GaD">
+                                <rect key="frame" x="171" y="617" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K0n-TG-l0Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07h-aj-41A">
+                                <rect key="frame" x="225" y="617" width="55" height="30"/>
+                                <state key="normal" title="Resume"/>
+                                <connections>
+                                    <action selector="resumeButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cpS-J2-1QP"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSj-DJ-DTC" customClass="AYTypewriterView" customModule="AYTypeWriter" customModuleProvider="target">
+                                <rect key="frame" x="50.5" y="133" width="275" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="F84-QO-WAE"/>
+                                    <constraint firstAttribute="width" constant="275" id="M0a-Go-i1X"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="h1a-WS-fGW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4fc-zR-gTR"/>
-                            <constraint firstItem="h1a-WS-fGW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ANU-Xs-WiG"/>
+                            <constraint firstItem="f0D-51-tyy" firstAttribute="centerY" secondItem="tiD-6I-XV9" secondAttribute="centerY" id="0Im-cn-ses"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OXA-iV-GaD" secondAttribute="bottom" constant="20" id="1OC-cO-DQQ"/>
+                            <constraint firstItem="07h-aj-41A" firstAttribute="leading" secondItem="OXA-iV-GaD" secondAttribute="trailing" constant="20" id="5ma-xs-kp9"/>
+                            <constraint firstItem="bUd-nQ-0M0" firstAttribute="leading" secondItem="07h-aj-41A" secondAttribute="trailing" constant="20" id="G4A-4H-vDe"/>
+                            <constraint firstItem="bUd-nQ-0M0" firstAttribute="centerY" secondItem="tiD-6I-XV9" secondAttribute="centerY" id="L75-A8-30j"/>
+                            <constraint firstItem="07h-aj-41A" firstAttribute="centerY" secondItem="tiD-6I-XV9" secondAttribute="centerY" id="M0D-vQ-MUE"/>
+                            <constraint firstItem="mSj-DJ-DTC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U4L-Zv-FOI"/>
+                            <constraint firstItem="OXA-iV-GaD" firstAttribute="leading" secondItem="f0D-51-tyy" secondAttribute="trailing" constant="20" id="V3s-vz-3db"/>
+                            <constraint firstItem="mSj-DJ-DTC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iDf-Oy-4Nx"/>
+                            <constraint firstItem="f0D-51-tyy" firstAttribute="leading" secondItem="tiD-6I-XV9" secondAttribute="trailing" constant="20" id="jBP-qH-IRv"/>
+                            <constraint firstItem="OXA-iV-GaD" firstAttribute="centerY" secondItem="tiD-6I-XV9" secondAttribute="centerY" id="jQH-gk-2Wy"/>
+                            <constraint firstItem="OXA-iV-GaD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vm6-hR-h11"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="exampleLabel" destination="h1a-WS-fGW" id="QDl-fN-xRp"/>
+                        <outlet property="typewriterView" destination="mSj-DJ-DTC" id="zbK-LI-LI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

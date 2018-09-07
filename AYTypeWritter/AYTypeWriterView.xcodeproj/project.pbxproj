@@ -14,7 +14,7 @@
 		7EB714682140B1CB00110D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB714662140B1CB00110D94 /* LaunchScreen.storyboard */; };
 		7EB714732140B1CB00110D94 /* AYTypeWritterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB714722140B1CB00110D94 /* AYTypeWritterTests.swift */; };
 		7EB7147E2140B1CB00110D94 /* AYTypeWritterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7147D2140B1CB00110D94 /* AYTypeWritterUITests.swift */; };
-		7EB7148C2140B21900110D94 /* AYTypeWriterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7148B2140B21900110D94 /* AYTypeWriterLabel.swift */; };
+		7EB7148C2140B21900110D94 /* AYTypewriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7148B2140B21900110D94 /* AYTypewriterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +35,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7EB7145A2140B1CA00110D94 /* AYTypeWriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AYTypeWriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EB7145A2140B1CA00110D94 /* AYTypeWriterView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AYTypeWriterView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB7145D2140B1CA00110D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EB7145F2140B1CA00110D94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7EB714622140B1CA00110D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EB714642140B1CB00110D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EB714672140B1CB00110D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EB714692140B1CB00110D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EB7146E2140B1CB00110D94 /* AYTypeWriterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AYTypeWriterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EB7146E2140B1CB00110D94 /* AYTypeWriterViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AYTypeWriterViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB714722140B1CB00110D94 /* AYTypeWritterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYTypeWritterTests.swift; sourceTree = "<group>"; };
 		7EB714742140B1CB00110D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EB714792140B1CB00110D94 /* AYTypeWriterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AYTypeWriterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EB714792140B1CB00110D94 /* AYTypeWriterViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AYTypeWriterViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB7147D2140B1CB00110D94 /* AYTypeWritterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYTypeWritterUITests.swift; sourceTree = "<group>"; };
 		7EB7147F2140B1CB00110D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EB7148B2140B21900110D94 /* AYTypeWriterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYTypeWriterLabel.swift; sourceTree = "<group>"; };
+		7EB7148B2140B21900110D94 /* AYTypewriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYTypewriterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +89,9 @@
 		7EB7145B2140B1CA00110D94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7EB7145A2140B1CA00110D94 /* AYTypeWriter.app */,
-				7EB7146E2140B1CB00110D94 /* AYTypeWriterTests.xctest */,
-				7EB714792140B1CB00110D94 /* AYTypeWriterUITests.xctest */,
+				7EB7145A2140B1CA00110D94 /* AYTypeWriterView.app */,
+				7EB7146E2140B1CB00110D94 /* AYTypeWriterViewTests.xctest */,
+				7EB714792140B1CB00110D94 /* AYTypeWriterViewUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 				7EB714642140B1CB00110D94 /* Assets.xcassets */,
 				7EB714662140B1CB00110D94 /* LaunchScreen.storyboard */,
 				7EB714692140B1CB00110D94 /* Info.plist */,
-				7EB7148B2140B21900110D94 /* AYTypeWriterLabel.swift */,
+				7EB7148B2140B21900110D94 /* AYTypewriterView.swift */,
 			);
 			path = AYTypeWritter;
 			sourceTree = "<group>";
@@ -131,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7EB714592140B1CA00110D94 /* AYTypeWriter */ = {
+		7EB714592140B1CA00110D94 /* AYTypeWriterView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7EB714822140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriter" */;
+			buildConfigurationList = 7EB714822140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterView" */;
 			buildPhases = (
 				7EB714562140B1CA00110D94 /* Sources */,
 				7EB714572140B1CA00110D94 /* Frameworks */,
@@ -143,14 +143,14 @@
 			);
 			dependencies = (
 			);
-			name = AYTypeWriter;
+			name = AYTypeWriterView;
 			productName = AYTypeWritter;
-			productReference = 7EB7145A2140B1CA00110D94 /* AYTypeWriter.app */;
+			productReference = 7EB7145A2140B1CA00110D94 /* AYTypeWriterView.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7EB7146D2140B1CB00110D94 /* AYTypeWriterTests */ = {
+		7EB7146D2140B1CB00110D94 /* AYTypeWriterViewTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7EB714852140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterTests" */;
+			buildConfigurationList = 7EB714852140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterViewTests" */;
 			buildPhases = (
 				7EB7146A2140B1CB00110D94 /* Sources */,
 				7EB7146B2140B1CB00110D94 /* Frameworks */,
@@ -161,14 +161,14 @@
 			dependencies = (
 				7EB714702140B1CB00110D94 /* PBXTargetDependency */,
 			);
-			name = AYTypeWriterTests;
+			name = AYTypeWriterViewTests;
 			productName = AYTypeWritterTests;
-			productReference = 7EB7146E2140B1CB00110D94 /* AYTypeWriterTests.xctest */;
+			productReference = 7EB7146E2140B1CB00110D94 /* AYTypeWriterViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7EB714782140B1CB00110D94 /* AYTypeWriterUITests */ = {
+		7EB714782140B1CB00110D94 /* AYTypeWriterViewUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7EB714882140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterUITests" */;
+			buildConfigurationList = 7EB714882140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterViewUITests" */;
 			buildPhases = (
 				7EB714752140B1CB00110D94 /* Sources */,
 				7EB714762140B1CB00110D94 /* Frameworks */,
@@ -179,9 +179,9 @@
 			dependencies = (
 				7EB7147B2140B1CB00110D94 /* PBXTargetDependency */,
 			);
-			name = AYTypeWriterUITests;
+			name = AYTypeWriterViewUITests;
 			productName = AYTypeWritterUITests;
-			productReference = 7EB714792140B1CB00110D94 /* AYTypeWriterUITests.xctest */;
+			productReference = 7EB714792140B1CB00110D94 /* AYTypeWriterViewUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7EB714552140B1CA00110D94 /* Build configuration list for PBXProject "AYTypeWriter" */;
+			buildConfigurationList = 7EB714552140B1CA00110D94 /* Build configuration list for PBXProject "AYTypeWriterView" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,9 +220,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7EB714592140B1CA00110D94 /* AYTypeWriter */,
-				7EB7146D2140B1CB00110D94 /* AYTypeWriterTests */,
-				7EB714782140B1CB00110D94 /* AYTypeWriterUITests */,
+				7EB714592140B1CA00110D94 /* AYTypeWriterView */,
+				7EB7146D2140B1CB00110D94 /* AYTypeWriterViewTests */,
+				7EB714782140B1CB00110D94 /* AYTypeWriterViewUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -260,7 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB714602140B1CA00110D94 /* ViewController.swift in Sources */,
-				7EB7148C2140B21900110D94 /* AYTypeWriterLabel.swift in Sources */,
+				7EB7148C2140B21900110D94 /* AYTypewriterView.swift in Sources */,
 				7EB7145E2140B1CA00110D94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,12 +286,12 @@
 /* Begin PBXTargetDependency section */
 		7EB714702140B1CB00110D94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7EB714592140B1CA00110D94 /* AYTypeWriter */;
+			target = 7EB714592140B1CA00110D94 /* AYTypeWriterView */;
 			targetProxy = 7EB7146F2140B1CB00110D94 /* PBXContainerItemProxy */;
 		};
 		7EB7147B2140B1CB00110D94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7EB714592140B1CA00110D94 /* AYTypeWriter */;
+			target = 7EB714592140B1CA00110D94 /* AYTypeWriterView */;
 			targetProxy = 7EB7147A2140B1CB00110D94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -483,7 +483,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AYTypeWriter.app/AYTypeWriter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AYTypeWriterView.app/AYTypeWriterView";
 			};
 			name = Debug;
 		};
@@ -504,7 +504,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AYTypeWriter.app/AYTypeWriter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AYTypeWriterView.app/AYTypeWriterView";
 			};
 			name = Release;
 		};
@@ -551,7 +551,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7EB714552140B1CA00110D94 /* Build configuration list for PBXProject "AYTypeWriter" */ = {
+		7EB714552140B1CA00110D94 /* Build configuration list for PBXProject "AYTypeWriterView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EB714802140B1CB00110D94 /* Debug */,
@@ -560,7 +560,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7EB714822140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriter" */ = {
+		7EB714822140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EB714832140B1CB00110D94 /* Debug */,
@@ -569,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7EB714852140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterTests" */ = {
+		7EB714852140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EB714862140B1CB00110D94 /* Debug */,
@@ -578,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7EB714882140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterUITests" */ = {
+		7EB714882140B1CB00110D94 /* Build configuration list for PBXNativeTarget "AYTypeWriterViewUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EB714892140B1CB00110D94 /* Debug */,

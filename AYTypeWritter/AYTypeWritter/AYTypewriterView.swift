@@ -12,12 +12,28 @@ protocol AYTypeWriterLabelDelegate: class {
     func animationFinished()
 }
 
-public class AYTypeWriterLabel: UILabel {
-    public var shouldPlayTypingSound = false
-    public var shouldShowCursor = false
+//Hint: if you want to change the text after an animation is performed. You
+
+public class AYTypewriterView: UIView {
+    public var shouldPlayTypingSound = false //TODO
+    public var shouldShowCursor = false //TODO
+    public var typingSpeed = 0 //TODO
+    public var randomTypingInterval = false //TODO
     
-    private var originalAttributedString = NSAttributedString()
-    private var locationArray = [Int]()
+    public var label = UILabel()
+    private var displayingLabel = UILabel()
+    
+    private var originalAttributedString: NSAttributedString {
+        return label.attributedText ?? NSAttributedString()
+    }
+    private var locationArray: [Int] {
+        //TODO: use fp to make it clean.
+        var results = [Int]()
+        for (location, _) in self.originalAttributedString.string.enumerated() {
+            results.append(location)
+        }
+        return results
+    }
     private var currentLocation: Int {
         if currentLocationIndex >= locationArray.count {
             return 0
@@ -31,18 +47,36 @@ public class AYTypeWriterLabel: UILabel {
     private var currentLocationIndex = 0
     private var paused = false
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        self.addSubview(label)
+        self.addSubview(displayingLabel)
+        addConstraintsToFillParent(label)
+        addConstraintsToFillParent(displayingLabel)
+        label.isHidden = true
+    }
+
+
     //MARK: - Public Interface
     public func startAnimation() {
         resetAnimation()
-        copyOriginalAttributedString()
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
             guard !self.paused else { return }
-            self.animate(location: self.currentLocation)
-            self.currentLocationIndex += 1
-            print(self.currentLocation)
-            if self.currentLocationIndex > self.locationArray.count {
-                self.timer?.invalidate()
-                self.timer = nil
+            self.isHidden = false
+            if self.currentLocation == self.locationArray.count - 1 {
+                self.finishAnimation()
+            } else {
+                self.animate(location: self.currentLocation)
+                self.currentLocationIndex += 1
             }
         })
     }
@@ -55,21 +89,24 @@ public class AYTypeWriterLabel: UILabel {
         paused = false
     }
     
-    //TODO: under construction
-    public func resetAnimation() {
-        if currentLocationIndex != 0 {
-            currentLocationIndex = 0
-        }
-        if originalAttributedString.length > 0 {
-            animate(location: 0)
-        }
+    public func finishAnimation() {
+        timer?.invalidate()
+        timer = nil
+        animate(index: originalAttributedString.string.endIndex)
+    }
+    
+    public func clearAnimation() {
+        resetAnimation()
+        self.animate(index: originalAttributedString.string.startIndex)
     }
     
     //TODO: under construction
-    public func stopAnimation() {
-        //resetAnimationIndex()
-        guard let text = self.text else { return }
-//        animate(index: text.endIndex)
+    private func resetAnimation() {
+        if currentLocationIndex != 0 {
+            currentLocationIndex = 0
+        }
+        timer?.invalidate()
+        timer = nil
     }
     
     deinit {
@@ -77,19 +114,7 @@ public class AYTypeWriterLabel: UILabel {
         timer = nil
     }
     
-    //MARK: - Private Helpers
-    
-    private func copyOriginalAttributedString() {
-        guard currentLocationIndex == 0 else { return }
-        guard let tmp = self.attributedText else { return }
-        originalAttributedString = NSAttributedString(attributedString: tmp) //This is a dangerous operation. Need to ensure the label is reset before copying.
-        locationArray.removeAll()
-        for (location, _) in self.originalAttributedString.string.enumerated() {
-            locationArray.append(location)
-        }
-
-    }
-    
+    //MARK: - Private Helper
     private func animate(location: Int) {
         let text = originalAttributedString.string
         let startIndex = originalAttributedString.string.startIndex
@@ -116,7 +141,7 @@ public class AYTypeWriterLabel: UILabel {
         combinedAttributedString.append(showingAttributedString)
         combinedAttributedString.append(hidingAttributedString)
         print(combinedAttributedString.string)
-        self.attributedText = combinedAttributedString
+        displayingLabel.attributedText = combinedAttributedString
     }
     
     private func subAttributedString(from startIndex: String.Index, to endIndex: String.Index, attributedString: NSAttributedString) -> NSAttributedString {
@@ -128,5 +153,16 @@ public class AYTypeWriterLabel: UILabel {
             result.append(tmp)
         }
         return result
+    }
+    
+    
+    private func addConstraintsToFillParent(_ view: UIView) {
+        guard let parentView = view.superview else { return }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let constraintLeft = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: parentView, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let constraintRight = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: parentView, attribute: .right, multiplier: 1.0, constant: 0.0)
+        let constraintTop = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: parentView, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let constraintBottom = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parentView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        parentView.addConstraints([constraintLeft, constraintRight, constraintTop, constraintBottom])
     }
 }

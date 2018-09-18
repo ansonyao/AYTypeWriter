@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E9276A82150A5A600C5A69E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A02150A42900C5A69E /* Ubuntu-Regular.ttf */; };
+		7E9276A92150A5A900C5A69E /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A12150A42900C5A69E /* Ubuntu-Medium.ttf */; };
+		7E9276AA2150A5AC00C5A69E /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A62150A42A00C5A69E /* Ubuntu-Italic.ttf */; };
+		7E9276AB2150A5AE00C5A69E /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A42150A42A00C5A69E /* Ubuntu-BoldItalic.ttf */; };
+		7E9276AC2150A5B200C5A69E /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A52150A42A00C5A69E /* Ubuntu-Bold.ttf */; };
 		7EB7145E2140B1CA00110D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7145D2140B1CA00110D94 /* AppDelegate.swift */; };
 		7EB714602140B1CA00110D94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7145F2140B1CA00110D94 /* ViewController.swift */; };
 		7EB714632140B1CA00110D94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB714612140B1CA00110D94 /* Main.storyboard */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E9276A02150A42900C5A69E /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		7E9276A12150A42900C5A69E /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		7E9276A42150A42A00C5A69E /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7E9276A52150A42A00C5A69E /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		7E9276A62150A42A00C5A69E /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
 		7EB7145A2140B1CA00110D94 /* AYTypeWriterView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AYTypeWriterView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB7145D2140B1CA00110D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EB7145F2140B1CA00110D94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +86,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E92769E2150A41300C5A69E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7E92769F2150A41F00C5A69E /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7E92769F2150A41F00C5A69E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7E9276A52150A42A00C5A69E /* Ubuntu-Bold.ttf */,
+				7E9276A42150A42A00C5A69E /* Ubuntu-BoldItalic.ttf */,
+				7E9276A62150A42A00C5A69E /* Ubuntu-Italic.ttf */,
+				7E9276A12150A42900C5A69E /* Ubuntu-Medium.ttf */,
+				7E9276A02150A42900C5A69E /* Ubuntu-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		7EB714512140B1CA00110D94 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +129,7 @@
 		7EB7145C2140B1CA00110D94 /* AYTypeWritter */ = {
 			isa = PBXGroup;
 			children = (
+				7E92769E2150A41300C5A69E /* Resources */,
 				7EB7145D2140B1CA00110D94 /* AppDelegate.swift */,
 				7EB7145F2140B1CA00110D94 /* ViewController.swift */,
 				7EB714612140B1CA00110D94 /* Main.storyboard */,
@@ -232,6 +263,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9276A82150A5A600C5A69E /* Ubuntu-Regular.ttf in Resources */,
+				7E9276AB2150A5AE00C5A69E /* Ubuntu-BoldItalic.ttf in Resources */,
+				7E9276AA2150A5AC00C5A69E /* Ubuntu-Italic.ttf in Resources */,
+				7E9276A92150A5A900C5A69E /* Ubuntu-Medium.ttf in Resources */,
+				7E9276AC2150A5B200C5A69E /* Ubuntu-Bold.ttf in Resources */,
 				7EB714682140B1CB00110D94 /* LaunchScreen.storyboard in Resources */,
 				7EB714652140B1CB00110D94 /* Assets.xcassets in Resources */,
 				7EB714632140B1CA00110D94 /* Main.storyboard in Resources */,

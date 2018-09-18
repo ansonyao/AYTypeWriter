@@ -63,6 +63,7 @@ public class AYTypewriterView: UIView {
         addConstraintsToFillParent(label)
         addConstraintsToFillParent(displayingLabel)
         label.isHidden = true
+        displayingLabel.textAlignment = NSTextAlignment.center
     }
 
 

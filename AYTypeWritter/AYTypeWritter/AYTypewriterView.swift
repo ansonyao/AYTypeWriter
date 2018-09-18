@@ -8,17 +8,18 @@
 
 import UIKit
 
+//TODO
 protocol AYTypeWriterLabelDelegate: class {
     func animationFinished()
 }
 
-//Hint: if you want to change the text after an animation is performed. You
-
 public class AYTypewriterView: UIView {
     public var shouldPlayTypingSound = false //TODO
     public var shouldShowCursor = false //TODO
-    public var typingSpeed = 0 //TODO
-    public var randomTypingInterval = false //TODO
+    ///The interval between characters are typed. Unit is second.
+    public var typingInterval = 0.3
+    ///Add some randomness for the typing interval, which will make it feel like a real typewritter. 🤓
+    public var randomTypingInterval = 0.3
     
     public var label = UILabel()
     private var displayingLabel = UILabel()
@@ -27,12 +28,7 @@ public class AYTypewriterView: UIView {
         return label.attributedText ?? NSAttributedString()
     }
     private var locationArray: [Int] {
-        //TODO: use fp to make it clean.
-        var results = [Int]()
-        for (location, _) in self.originalAttributedString.string.enumerated() {
-            results.append(location)
-        }
-        return results
+        return originalAttributedString.string.enumerated().map({$0.0})
     }
     private var currentLocation: Int {
         if currentLocationIndex >= locationArray.count {
@@ -47,6 +43,7 @@ public class AYTypewriterView: UIView {
     private var currentLocationIndex = 0
     private var paused = false
     
+    //MARK: - Init
     public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -66,18 +63,26 @@ public class AYTypewriterView: UIView {
         displayingLabel.textAlignment = NSTextAlignment.center
     }
 
-
-    //MARK: - Public Interface
+    //MARK: - Actions
     public func startAnimation() {
         resetAnimation()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
-            guard !self.paused else { return }
-            self.isHidden = false
-            if self.currentLocation == self.locationArray.count - 1 {
-                self.finishAnimation()
+        setTimerToPrintNextCharacter()
+    }
+    
+    public func setTimerToPrintNextCharacter() {
+        timer = Timer.scheduledTimer(withTimeInterval: getNextInterval(), repeats: false, block: { [weak self] (timer) in
+            guard let strongSelf = self else { return }
+            if strongSelf.paused {
+                strongSelf.setTimerToPrintNextCharacter()
             } else {
-                self.animate(location: self.currentLocation)
-                self.currentLocationIndex += 1
+                strongSelf.isHidden = false
+                if strongSelf.currentLocation == strongSelf.locationArray.count - 1 {
+                    strongSelf.finishAnimation()
+                } else {
+                    strongSelf.animate(location: strongSelf.currentLocation)
+                    strongSelf.currentLocationIndex += 1
+                    strongSelf.setTimerToPrintNextCharacter()
+                }
             }
         })
     }
@@ -101,13 +106,13 @@ public class AYTypewriterView: UIView {
         self.animate(index: originalAttributedString.string.startIndex)
     }
     
-    //TODO: under construction
     private func resetAnimation() {
         if currentLocationIndex != 0 {
             currentLocationIndex = 0
         }
         timer?.invalidate()
         timer = nil
+        paused = false
     }
     
     deinit {
@@ -141,7 +146,6 @@ public class AYTypewriterView: UIView {
         let hidingAttributedString = hidingAttributedStringMutable as NSAttributedString
         combinedAttributedString.append(showingAttributedString)
         combinedAttributedString.append(hidingAttributedString)
-        print(combinedAttributedString.string)
         displayingLabel.attributedText = combinedAttributedString
     }
     
@@ -155,8 +159,7 @@ public class AYTypewriterView: UIView {
         }
         return result
     }
-    
-    
+
     private func addConstraintsToFillParent(_ view: UIView) {
         guard let parentView = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -165,5 +168,9 @@ public class AYTypewriterView: UIView {
         let constraintTop = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: parentView, attribute: .top, multiplier: 1.0, constant: 0.0)
         let constraintBottom = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parentView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         parentView.addConstraints([constraintLeft, constraintRight, constraintTop, constraintBottom])
+    }
+    
+    private func getNextInterval() -> Double {
+       return max(0.01, typingInterval + (Double(arc4random_uniform(256)) - 128) / 128.0 * randomTypingInterval)
     }
 }

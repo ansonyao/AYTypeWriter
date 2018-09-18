@@ -11,39 +11,39 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var typewriterView: AYTypewriterView!
     
+    let welcomeMessage = "Hello, AYTypeWriterLabel 📝"
+    let primaryColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let primaryFont = UIFont(name: "Ubuntu-Bold", size: 18)!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        typewriterView.label.text = "Hello, AYTypeWriterLabel"
-        typewriterView.startAnimation()
         
-        //It works for both customization on the UILabel or the AttributedString
         /*
          Customization 1
         */
+        //typewriterView.label.text = welcomeMessage
         //setupTextAppearance()
         
         /*
          Customization 2
          */
         typewriterView.label.attributedText = getAttributedText()
+        //Both customizations will work
+
+        typewriterView.startAnimation()
     }
     
     func setupTextAppearance() {
-        typewriterView.label.textColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
-        typewriterView.label.font = UIFont(name: "Ubuntu-Bold", size: 18)
+        typewriterView.label.textColor = primaryColor
+        typewriterView.label.font = primaryFont
     }
     
     func getAttributedText() -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: "Hello, AYTypeWriterLabel", attributes:
-            [NSAttributedStringKey.foregroundColor: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
-             NSAttributedStringKey.font: UIFont(name: "Ubuntu-Bold", size: 18)]
+        let attributedString = NSMutableAttributedString(string: welcomeMessage, attributes:
+            [NSAttributedStringKey.foregroundColor: primaryColor,
+             NSAttributedStringKey.font: primaryFont]
         )
         return attributedString
-    }
-    
-    func setupTextAppearanceWithAttributedString() {
-        
     }
     
     @IBAction func startButtonAction(_ sender: UIButton) {

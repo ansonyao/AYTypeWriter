@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 //TODO
 protocol AYTypeWriterLabelDelegate: class {
@@ -14,7 +15,9 @@ protocol AYTypeWriterLabelDelegate: class {
 }
 
 public class AYTypewriterView: UIView {
-    public var shouldPlayTypingSound = false //TODO
+    public var shouldPlayTypingSound = true
+    ///Will use the default sound if unspecified.
+    public var typingSoundFileURL: URL?
     
     public var shouldShowCursor = true
     ///Will use the default cursor if cursorImage is unspecified.
@@ -31,6 +34,9 @@ public class AYTypewriterView: UIView {
     
     public let label = UILabel()
     private let displayingLabel = UILabel()
+    private var activeAudioPlayers = [AVAudioPlayer]()
+    private let audioPlayerQueue = DispatchQueue(label: "com.aytypewriter.audioplayerqueue") //For synchronized operation on array activeAudioPlayers
+    
     private let defaultcursorWidth = 8.0
     private let defaultcursorHeight = 18.0
     
@@ -99,10 +105,12 @@ public class AYTypewriterView: UIView {
     
     public func pauseAnimation() {
         paused = true
+        playSound()
     }
     
     public func resumeAnimation() {
         paused = false
+        playSound()
     }
     
     public func finishAnimation() {
@@ -159,6 +167,10 @@ public class AYTypewriterView: UIView {
         }
         combinedAttributedString.append(hidingAttributedString)
         displayingLabel.attributedText = combinedAttributedString
+        
+        if shouldPlayTypingSound {
+            playSound()
+        }
     }
     
     private func getcursorString(hidden: Bool) -> NSAttributedString {
@@ -194,6 +206,31 @@ public class AYTypewriterView: UIView {
     
     private func getNextInterval() -> Double {
        return max(0.01, typingInterval + (Double(arc4random_uniform(256)) - 128) / 128.0 * randomTypingInterval)
+    }
+    
+    private func playSound() {
+        let path = Bundle.main.path(forResource: "typingSoundShort", ofType: ".wav")
+        guard let url = typingSoundFileURL ?? (path != nil ? URL(fileURLWithPath: path!) : nil) else { return }
+        
+        do {
+            let audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer.play()
+            audioPlayerQueue.sync {
+                activeAudioPlayers.append(audioPlayer)
+            }
+        } catch {
+            print("Player not available")
+        }
+    }
+}
+
+extension AYTypewriterView: AVAudioPlayerDelegate {
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        audioPlayerQueue.sync {
+            if let index = activeAudioPlayers.index(of: player) {
+                activeAudioPlayers.remove(at: index)
+            }
+        }
     }
 }
 

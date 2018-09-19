@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         //Both customizations will work
 
         typewriterView.startAnimation()
+        typewriterView.delegate = self
     }
     
     func setupTextAppearance() {
@@ -65,6 +66,11 @@ class ViewController: UIViewController {
     @IBAction func resetButtonAction(_ sender: UIButton) {
         typewriterView.clearAnimation()
     }
-    
+}
+
+extension ViewController: AYTypeWriterLabelDelegate {
+    func animationFinished() {
+        NSLog("animationFinished")
+    }
 }
 

@@ -32,6 +32,8 @@ public class AYTypewriterView: UIView {
     ///Add some randomness for the typing interval, which will make it feel like a real typewritter. 🤓
     public var randomTypingInterval = 0.3
     
+    weak var delegate: AYTypeWriterLabelDelegate?
+    
     public let label = UILabel()
     private let displayingLabel = UILabel()
     private var activeAudioPlayers = [AVAudioPlayer]()
@@ -39,6 +41,7 @@ public class AYTypewriterView: UIView {
     
     private let defaultcursorWidth = 8.0
     private let defaultcursorHeight = 18.0
+    
     
     private var originalAttributedString: NSAttributedString {
         return label.attributedText ?? NSAttributedString()
@@ -170,6 +173,10 @@ public class AYTypewriterView: UIView {
         
         if shouldPlayTypingSound {
             playSound()
+        }
+        
+        if !showingAttributedString.string.isEmpty && hidingAttributedString.string.isEmpty {
+            delegate?.animationFinished()
         }
     }
     

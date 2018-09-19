@@ -15,14 +15,24 @@ protocol AYTypeWriterLabelDelegate: class {
 
 public class AYTypewriterView: UIView {
     public var shouldPlayTypingSound = false //TODO
-    public var shouldShowCursor = false //TODO
+    
+    public var shouldShowCursor = true
+    ///Will use the default curser if curserImage is unspecified.
+    public var curserImage: UIImage? = nil
+    ///Will use white color if unspecified
+    public var curserColor: UIColor? = nil
+    ///Will use default size if unsepficied
+    public var curserSize: CGSize? = nil
+    
     ///The interval between characters are typed. Unit is second.
     public var typingInterval = 0.3
     ///Add some randomness for the typing interval, which will make it feel like a real typewritter. 🤓
     public var randomTypingInterval = 0.3
     
-    public var label = UILabel()
-    private var displayingLabel = UILabel()
+    public let label = UILabel()
+    private let displayingLabel = UILabel()
+    private let defaultCurserWidth = 8.0
+    private let defaultCurserHeight = 18.0
     
     private var originalAttributedString: NSAttributedString {
         return label.attributedText ?? NSAttributedString()
@@ -142,11 +152,23 @@ public class AYTypewriterView: UIView {
                 NSAttributedStringKey.strikethroughColor : UIColor.clear,
                 NSAttributedStringKey.underlineColor : UIColor.clear
             ], range: NSRange(range, in: hidingAttributedStringMutable.string))
-        
         let hidingAttributedString = hidingAttributedStringMutable as NSAttributedString
         combinedAttributedString.append(showingAttributedString)
+        if shouldShowCursor {
+            combinedAttributedString.append(getCurserString(hidden: hidingAttributedString.string.isEmpty))
+        }
         combinedAttributedString.append(hidingAttributedString)
         displayingLabel.attributedText = combinedAttributedString
+    }
+    
+    private func getCurserString(hidden: Bool) -> NSAttributedString {
+        let attachment = NSTextAttachment()
+        let curserColor = self.curserColor ?? UIColor.red
+        let curserImage = hidden ? UIImage.from(color: UIColor.clear) : (self.curserImage ?? UIImage.from(color: curserColor))
+        let curserSize = self.curserSize.map({CGRect(x: 0.0, y: displayingLabel.font.descender, width: $0.width, height: $0.height)}) ?? CGRect(x: 0.0, y: Double(displayingLabel.font.descender), width: defaultCurserWidth, height: defaultCurserHeight)
+        attachment.image = curserImage
+        attachment.bounds = curserSize
+        return NSAttributedString(attachment: attachment)
     }
     
     private func subAttributedString(from startIndex: String.Index, to endIndex: String.Index, attributedString: NSAttributedString) -> NSAttributedString {
@@ -172,5 +194,18 @@ public class AYTypewriterView: UIView {
     
     private func getNextInterval() -> Double {
        return max(0.01, typingInterval + (Double(arc4random_uniform(256)) - 128) / 128.0 * randomTypingInterval)
+    }
+}
+
+extension UIImage {
+    static func from(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
     }
 }

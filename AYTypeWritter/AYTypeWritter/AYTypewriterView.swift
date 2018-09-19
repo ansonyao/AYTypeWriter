@@ -17,12 +17,12 @@ public class AYTypewriterView: UIView {
     public var shouldPlayTypingSound = false //TODO
     
     public var shouldShowCursor = true
-    ///Will use the default curser if curserImage is unspecified.
-    public var curserImage: UIImage? = nil
+    ///Will use the default cursor if cursorImage is unspecified.
+    public var cursorImage: UIImage? = nil
     ///Will use white color if unspecified
-    public var curserColor: UIColor? = nil
+    public var cursorColor: UIColor? = nil
     ///Will use default size if unsepficied
-    public var curserSize: CGSize? = nil
+    public var cursorSize: CGSize? = nil
     
     ///The interval between characters are typed. Unit is second.
     public var typingInterval = 0.3
@@ -31,8 +31,8 @@ public class AYTypewriterView: UIView {
     
     public let label = UILabel()
     private let displayingLabel = UILabel()
-    private let defaultCurserWidth = 8.0
-    private let defaultCurserHeight = 18.0
+    private let defaultcursorWidth = 8.0
+    private let defaultcursorHeight = 18.0
     
     private var originalAttributedString: NSAttributedString {
         return label.attributedText ?? NSAttributedString()
@@ -155,19 +155,19 @@ public class AYTypewriterView: UIView {
         let hidingAttributedString = hidingAttributedStringMutable as NSAttributedString
         combinedAttributedString.append(showingAttributedString)
         if shouldShowCursor {
-            combinedAttributedString.append(getCurserString(hidden: hidingAttributedString.string.isEmpty))
+            combinedAttributedString.append(getcursorString(hidden: hidingAttributedString.string.isEmpty))
         }
         combinedAttributedString.append(hidingAttributedString)
         displayingLabel.attributedText = combinedAttributedString
     }
     
-    private func getCurserString(hidden: Bool) -> NSAttributedString {
+    private func getcursorString(hidden: Bool) -> NSAttributedString {
         let attachment = NSTextAttachment()
-        let curserColor = self.curserColor ?? UIColor.red
-        let curserImage = hidden ? UIImage.from(color: UIColor.clear) : (self.curserImage ?? UIImage.from(color: curserColor))
-        let curserSize = self.curserSize.map({CGRect(x: 0.0, y: displayingLabel.font.descender, width: $0.width, height: $0.height)}) ?? CGRect(x: 0.0, y: Double(displayingLabel.font.descender), width: defaultCurserWidth, height: defaultCurserHeight)
-        attachment.image = curserImage
-        attachment.bounds = curserSize
+        let cursorColor = self.cursorColor ?? UIColor.red
+        let cursorImage = hidden ? UIImage.from(color: UIColor.clear) : (self.cursorImage ?? UIImage.from(color: cursorColor))
+        let cursorSize = self.cursorSize.map({CGRect(x: 0.0, y: displayingLabel.font.descender, width: $0.width, height: $0.height)}) ?? CGRect(x: 0.0, y: Double(displayingLabel.font.descender), width: defaultcursorWidth, height: defaultcursorHeight)
+        attachment.image = cursorImage
+        attachment.bounds = cursorSize
         return NSAttributedString(attachment: attachment)
     }
     

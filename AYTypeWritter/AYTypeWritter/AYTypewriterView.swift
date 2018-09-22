@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 
-//TODO
 protocol AYTypeWriterLabelDelegate: class {
     func animationFinished()
 }
@@ -124,7 +123,7 @@ public class AYTypewriterView: UIView {
     
     public func clearAnimation() {
         resetAnimation()
-        self.animate(index: originalAttributedString.string.startIndex)
+        self.displayingLabel.attributedText = NSAttributedString()
     }
     
     private func resetAnimation() {
@@ -226,7 +225,7 @@ public class AYTypewriterView: UIView {
                 activeAudioPlayers.append(audioPlayer)
             }
         } catch {
-            print("Player not available")
+            NSLog("Player not available")
         }
     }
 }
@@ -241,6 +240,7 @@ extension AYTypewriterView: AVAudioPlayerDelegate {
     }
 }
 
+//I will put it here so people just need to copy this one file to get it work.
 extension UIImage {
     static func from(color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)

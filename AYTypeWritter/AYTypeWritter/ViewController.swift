@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.black
+        typewriterView.backgroundColor = UIColor.black
         
         /*
          Customization 1
@@ -27,7 +29,8 @@ class ViewController: UIViewController {
         /*
          Customization 2
          */
-        typewriterView.label.attributedText = getAttributedText()
+//        typewriterView.label.attributedText = getAttributedText()
+        typewriterView.label.attributedText = getAttributedTextWithRainBowColors()
         //Both customizations will work
 
         typewriterView.startAnimation()
@@ -44,6 +47,27 @@ class ViewController: UIViewController {
             [NSAttributedStringKey.foregroundColor: primaryColor,
              NSAttributedStringKey.font: primaryFont]
         )
+        return attributedString
+    }
+    
+    //Just for fun
+    func getAttributedTextWithRainBowColors() -> NSAttributedString {
+        let colors = [
+            UIColor.getColor(rgb: (148, 0, 211)),
+            UIColor.getColor(rgb: (75, 0, 130)),
+            UIColor.getColor(rgb: (0, 0, 255)),
+            UIColor.getColor(rgb: (0, 255, 0)),
+            UIColor.getColor(rgb: (255, 255, 0)),
+            UIColor.getColor(rgb: (255, 127, 0)),
+            UIColor.getColor(rgb: (255, 0 , 0))
+        ]
+        let attributedString = NSMutableAttributedString()
+        let characters = Array(welcomeMessage)
+        for (index, subString) in characters.enumerated()  {
+            attributedString.append(NSAttributedString(string: String(subString), attributes:
+                [NSAttributedStringKey.foregroundColor: colors[index%colors.count],
+                 NSAttributedStringKey.font: primaryFont]))
+        }
         return attributedString
     }
     

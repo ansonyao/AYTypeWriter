@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E078FAE2156F5730034F514 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E078FAD2156F5730034F514 /* UIColor+Extension.swift */; };
 		7E9276A82150A5A600C5A69E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A02150A42900C5A69E /* Ubuntu-Regular.ttf */; };
 		7E9276A92150A5A900C5A69E /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A12150A42900C5A69E /* Ubuntu-Medium.ttf */; };
 		7E9276AA2150A5AC00C5A69E /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9276A62150A42A00C5A69E /* Ubuntu-Italic.ttf */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E078FAD2156F5730034F514 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7E9276A02150A42900C5A69E /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		7E9276A12150A42900C5A69E /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		7E9276A42150A42A00C5A69E /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -88,9 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E078FAC2156F5060034F514 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E078FAD2156F5730034F514 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7E92769E2150A41300C5A69E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7E078FAC2156F5060034F514 /* Extensions */,
 				7E9277312152002100C5A69E /* Sounds */,
 				7E92769F2150A41F00C5A69E /* Fonts */,
 			);
@@ -142,12 +153,12 @@
 			children = (
 				7E92769E2150A41300C5A69E /* Resources */,
 				7EB7145D2140B1CA00110D94 /* AppDelegate.swift */,
+				7EB7148B2140B21900110D94 /* AYTypewriterView.swift */,
 				7EB7145F2140B1CA00110D94 /* ViewController.swift */,
 				7EB714612140B1CA00110D94 /* Main.storyboard */,
 				7EB714642140B1CB00110D94 /* Assets.xcassets */,
 				7EB714662140B1CB00110D94 /* LaunchScreen.storyboard */,
 				7EB714692140B1CB00110D94 /* Info.plist */,
-				7EB7148B2140B21900110D94 /* AYTypewriterView.swift */,
 			);
 			path = AYTypeWritter;
 			sourceTree = "<group>";
@@ -310,6 +321,7 @@
 				7EB714602140B1CA00110D94 /* ViewController.swift in Sources */,
 				7EB7148C2140B21900110D94 /* AYTypewriterView.swift in Sources */,
 				7EB7145E2140B1CA00110D94 /* AppDelegate.swift in Sources */,
+				7E078FAE2156F5730034F514 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

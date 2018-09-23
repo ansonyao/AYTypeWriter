@@ -18,7 +18,7 @@ public class AYTypewriterView: UIView {
     ///Will use the default sound if unspecified.
     public var typingSoundFileURL: URL?
     ///Add some delay to align the typing sound with animation. Depends on your sound file.
-    public let soundToAnimationDelay = 0.1
+    public let soundToAnimationDelay = 0.00
     
     public var shouldShowCursor = true
     ///Will use the default cursor if cursorImage is unspecified.
@@ -29,7 +29,7 @@ public class AYTypewriterView: UIView {
     public var cursorSize: CGSize? = nil
     
     ///The interval between characters are typed. Unit is second.
-    public var typingInterval = 0.3
+    public var typingInterval = 0.2
     ///Add some randomness for the typing interval, which will make it feel like a real typewritter. 🤓
     public var randomTypingInterval = 0.1
 
@@ -89,12 +89,11 @@ public class AYTypewriterView: UIView {
     }
     
     public func setTimerToPrintNextCharacter() {
-        timer = Timer.scheduledTimer(timeInterval: getNextInterval(), target: self, selector: #selector(printNextCharacter), userInfo: nil, repeats: false)
+        let delay = getNextInterval()
+        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(printNextCharacter), userInfo: nil, repeats: false)
     }
     
     @objc private func printNextCharacter() {
-
-        
         if paused {
             setTimerToPrintNextCharacter()
         } else {
@@ -222,7 +221,8 @@ public class AYTypewriterView: UIView {
     }
     
     private func getNextInterval() -> Double {
-       return max(0.01, typingInterval + (Double(arc4random_uniform(256)) - 128) / 128.0 * randomTypingInterval)
+        let result = max(0.01, typingInterval + (Double(arc4random_uniform(256)) - 128) / 128.0 * randomTypingInterval)
+        return result
     }
     
     private func playSound() {

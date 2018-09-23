@@ -17,6 +17,8 @@ public class AYTypewriterView: UIView {
     public var shouldPlayTypingSound = true
     ///Will use the default sound if unspecified.
     public var typingSoundFileURL: URL?
+    ///Add some delay to align the typing sound with animation. Depends on your sound file.
+    public let soundToAnimationDelay = 0.1
     
     public var shouldShowCursor = true
     ///Will use the default cursor if cursorImage is unspecified.
@@ -29,8 +31,8 @@ public class AYTypewriterView: UIView {
     ///The interval between characters are typed. Unit is second.
     public var typingInterval = 0.3
     ///Add some randomness for the typing interval, which will make it feel like a real typewritter. 🤓
-    public var randomTypingInterval = 0.3
-    
+    public var randomTypingInterval = 0.1
+
     public weak var delegate: AYTypeWriterLabelDelegate?
     
     public let label = UILabel()
@@ -40,7 +42,6 @@ public class AYTypewriterView: UIView {
     
     private let defaultcursorWidth = 8.0
     private let defaultcursorHeight = 18.0
-    
     
     private var originalAttributedString: NSAttributedString {
         return label.attributedText ?? NSAttributedString()
@@ -92,6 +93,8 @@ public class AYTypewriterView: UIView {
     }
     
     @objc private func printNextCharacter() {
+
+        
         if paused {
             setTimerToPrintNextCharacter()
         } else {
@@ -99,9 +102,20 @@ public class AYTypewriterView: UIView {
             if currentLocation == locationArray.count - 1 {
                 finishAnimation()
             } else {
-                animate(location: currentLocation)
-                currentLocationIndex += 1
-                setTimerToPrintNextCharacter()
+                func animateNextCharacter() {
+                    animate(location: currentLocation)
+                    currentLocationIndex += 1
+                    setTimerToPrintNextCharacter()
+                }
+                
+                if shouldPlayTypingSound {
+                    playSound()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + soundToAnimationDelay) {
+                        animateNextCharacter()
+                    }
+                } else {
+                    animateNextCharacter()
+                }
             }
         }
     }
@@ -170,10 +184,6 @@ public class AYTypewriterView: UIView {
         }
         combinedAttributedString.append(hidingAttributedString)
         displayingLabel.attributedText = combinedAttributedString
-        
-        if shouldPlayTypingSound {
-            playSound()
-        }
         
         if !showingAttributedString.string.isEmpty && hidingAttributedString.string.isEmpty {
             delegate?.animationFinished()

@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		31907AF6C114F6FE313FEA7B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4099F1B21EDF66FF7B29EEE7 /* Pods_AYTypeWriter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AYTypeWriter_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		47F6D0544DAB32D4608EE4A0 /* AYTypeWriter.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AYTypeWriter.podspec; path = ../AYTypeWriter.podspec; sourceTree = "<group>"; };
+		47F6D0544DAB32D4608EE4A0 /* AYTypeWriter.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AYTypeWriter.podspec; path = ../AYTypeWriter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* AYTypeWriter_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AYTypeWriter_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

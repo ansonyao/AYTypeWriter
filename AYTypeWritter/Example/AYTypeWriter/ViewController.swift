@@ -12,7 +12,7 @@ import AYTypeWriter
 class ViewController: UIViewController {
     @IBOutlet weak var typewriterView: AYTypewriterView!
     
-    let welcomeMessage = "Hello, AYTypeWriterLabel 📝"
+    let welcomeMessage = "Hello, AYTypeWriterView 📝"
     let primaryColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let primaryFont = UIFont(name: "Ubuntu-Bold", size: 18)!
     

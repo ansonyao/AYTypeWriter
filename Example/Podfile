@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'AYTypeWriter_Example' do
+  pod 'AYTypeWriter', :path => '../'
+  
+end

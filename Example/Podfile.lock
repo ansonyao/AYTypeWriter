@@ -1,0 +1,16 @@
+PODS:
+  - AYTypeWriter (1.0.0)
+
+DEPENDENCIES:
+  - AYTypeWriter (from `../`)
+
+EXTERNAL SOURCES:
+  AYTypeWriter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AYTypeWriter: dcf1f9494687a1334264c1ba0ba3ae721de49bfa
+
+PODFILE CHECKSUM: 482d3be434d39483b7e317bb6313bfffa9c4274a
+
+COCOAPODS: 1.5.3

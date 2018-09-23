@@ -46,8 +46,8 @@ class ViewController: UIViewController {
     
     func getAttributedText() -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: welcomeMessage, attributes:
-            [NSAttributedStringKey.foregroundColor: primaryColor,
-             NSAttributedStringKey.font: primaryFont]
+            [NSAttributedString.Key.foregroundColor: primaryColor,
+             NSAttributedString.Key.font: primaryFont]
         )
         return attributedString
     }
@@ -67,8 +67,8 @@ class ViewController: UIViewController {
         let characters = Array(welcomeMessage)
         for (index, subString) in characters.enumerated()  {
             attributedString.append(NSAttributedString(string: String(subString), attributes:
-                [NSAttributedStringKey.foregroundColor: colors[index%colors.count],
-                 NSAttributedStringKey.font: primaryFont]))
+                [NSAttributedString.Key.foregroundColor: colors[index%colors.count],
+                 NSAttributedString.Key.font: primaryFont]))
         }
         return attributedString
     }

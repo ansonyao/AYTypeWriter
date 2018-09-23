@@ -172,9 +172,9 @@ public class AYTypewriterView: UIView {
         let hidingAttributedStringMutable = NSMutableAttributedString(attributedString: hidingAttributedStringOriginal)
         let range = hidingAttributedStringMutable.string.startIndex..<hidingAttributedStringMutable.string.endIndex
         hidingAttributedStringMutable.addAttributes([
-                NSAttributedStringKey.foregroundColor : UIColor.clear,
-                NSAttributedStringKey.strikethroughColor : UIColor.clear,
-                NSAttributedStringKey.underlineColor : UIColor.clear
+            NSAttributedString.Key.foregroundColor : UIColor.clear,
+            NSAttributedString.Key.strikethroughColor : UIColor.clear,
+            NSAttributedString.Key.underlineColor : UIColor.clear
             ], range: NSRange(range, in: hidingAttributedStringMutable.string))
         let hidingAttributedString = hidingAttributedStringMutable as NSAttributedString
         combinedAttributedString.append(showingAttributedString)

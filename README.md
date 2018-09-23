@@ -50,7 +50,7 @@ pod 'AYTypeWriter'
 
 ## Author
 
-anson, yaoenxin@gmail.com
+Anson (Enxin) Yao, yaoenxin@gmail.com
 
 ## License
 

@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  'The view show a typewriter like animation for arbitrary strings. It features an easy to use interface, random typing interval support, and typing sound support. You can start, pause, resume, finish, and reset the animation. Please check the public variables for all customizable properies.'
                        DESC
 
   s.homepage         = 'https://github.com/ansonyao/AYTypeWriter'

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol AYTypeWriterLabelDelegate: class {
+public protocol AYTypeWriterLabelDelegate: class {
     func animationFinished()
 }
 
@@ -31,7 +31,7 @@ public class AYTypewriterView: UIView {
     ///Add some randomness for the typing interval, which will make it feel like a real typewritter. 🤓
     public var randomTypingInterval = 0.3
     
-    weak var delegate: AYTypeWriterLabelDelegate?
+    public weak var delegate: AYTypeWriterLabelDelegate?
     
     public let label = UILabel()
     private let displayingLabel = UILabel()
@@ -88,21 +88,22 @@ public class AYTypewriterView: UIView {
     }
     
     public func setTimerToPrintNextCharacter() {
-        timer = Timer.scheduledTimer(withTimeInterval: getNextInterval(), repeats: false, block: { [weak self] (timer) in
-            guard let strongSelf = self else { return }
-            if strongSelf.paused {
-                strongSelf.setTimerToPrintNextCharacter()
+        timer = Timer.scheduledTimer(timeInterval: getNextInterval(), target: self, selector: #selector(printNextCharacter), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func printNextCharacter() {
+        if paused {
+            setTimerToPrintNextCharacter()
+        } else {
+            isHidden = false
+            if currentLocation == locationArray.count - 1 {
+                finishAnimation()
             } else {
-                strongSelf.isHidden = false
-                if strongSelf.currentLocation == strongSelf.locationArray.count - 1 {
-                    strongSelf.finishAnimation()
-                } else {
-                    strongSelf.animate(location: strongSelf.currentLocation)
-                    strongSelf.currentLocationIndex += 1
-                    strongSelf.setTimerToPrintNextCharacter()
-                }
+                animate(location: currentLocation)
+                currentLocationIndex += 1
+                setTimerToPrintNextCharacter()
             }
-        })
+        }
     }
     
     public func pauseAnimation() {

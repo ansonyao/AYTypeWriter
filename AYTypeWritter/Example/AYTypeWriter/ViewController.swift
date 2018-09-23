@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AYTypeWriter
 
 class ViewController: UIViewController {
     @IBOutlet weak var typewriterView: AYTypewriterView!
@@ -19,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         typewriterView.backgroundColor = UIColor.black
+        typewriterView.cursorColor = UIColor.white
         
         /*
          Customization 1
